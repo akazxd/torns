@@ -1,0 +1,16 @@
+## append to /etc/tor/torrc
+
+SocksPort 9050
+
+# --- Virtual Network Mapping for Direct .onion Access ---
+VirtualAddrNetworkIPv4 10.192.0.0/10
+AutomapHostsOnResolve 1
+AutomapHostsSuffixes .onion,.exit
+
+# --- Namespace Entry Interfaces ---
+TransPort 10.200.1.1:9040 IsolateClientAddr IsolateClientProtocol IsolateDestAddr IsolateDestPort
+DNSPort 10.200.1.1:15353
+
+# --- Onion Forwarding for Torrenting ---
+HiddenServiceDir /var/lib/tor/qbittorrent_service/
+HiddenServicePort 45682 10.200.1.2:16161
