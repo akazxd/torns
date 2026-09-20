@@ -28,11 +28,11 @@ ip netns exec torns ip link set lo up
 ip netns exec torns ip route replace default via 10.200.1.1
 
 # DNS Isolated Config
-# mkdir -p /etc/netns/torns
-# echo "nameserver 10.200.1.1" > /etc/netns/torns/resolv.conf
+mkdir -p /etc/netns/torns
+echo "nameserver 10.200.1.1" | sudo tee /etc/netns/torns/resolv.conf
 
-sudo mkdir -p /etc/netns/torns
-echo "nameserver 1.1.1.1" | sudo tee /etc/netns/torns/resolv.conf
+# sudo mkdir -p /etc/netns/torns
+# echo "nameserver 1.1.1.1" | sudo tee /etc/netns/torns/resolv.conf
 echo "hosts: files dns" | sudo tee /etc/netns/torns/nsswitch.conf
 
 
