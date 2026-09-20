@@ -65,10 +65,13 @@ Inside the namespace ns1, tell the network stack to route all external traffic t
 ## 4. Configure DNS inside the Namespace
 To resolve domain names (like google.com), the namespace needs a DNS server. Create a network-specific directory and add a nameserver:
 
+```bash
 sudo mkdir -p /etc/netns/ns1
 echo "nameserver 8.8.8.8" | sudo tee /etc/netns/ns1/resolv.conf
+```
 
-Note: Linux automatically swaps the namespace's /etc/resolv.conf with this file when running commands inside ns1.
+
+Note: Linux automatically swaps the namespace's ```/etc/resolv.conf``` with this file when running commands inside ns1.
 ## 5. Test the Connection
 Verify that everything is working by pinging an external IP and a domain name from inside the namespace:
 
